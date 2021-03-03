@@ -22,7 +22,7 @@ const calculateExercises = (dailyData: Array<number>, target: number): Exercises
 
   const percent = average / target * 100;
 
-console.log(percent)
+console.log(percent);
 
   if (percent < 50) rating = 1;
   else if (percent < 100) rating = 2;
@@ -65,8 +65,8 @@ console.log(percent)
     ratingDescription,
     target,
     average
-  }
-}
+  };
+};
 
 const parseArguments = (args: Array<string>): ExInput => {
   if (args.length < 4) throw new Error('not enoguh arguments');
@@ -78,14 +78,18 @@ const parseArguments = (args: Array<string>): ExInput => {
   return {
     target: numbers[0],
     data: numbers.slice(1)
-  }
-}
+  };
+};
 
 try {
-  const {target, data} = parseArguments(process.argv)
+  const {target, data} = parseArguments(process.argv);
   console.log(calculateExercises(data, target));
 } catch (e) {
-  console.log('inpu error: ', e.message)
+  if (e instanceof Error) {
+    console.log('error', e.message);
+  } else {
+    console.log('error', e);
+  }
 }
 
 

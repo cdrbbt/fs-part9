@@ -1,6 +1,6 @@
 type BMICategory = 'Very severely underweight' | 'Severely underweight' 
 | 'Underweight' | 'Normal (healthy weight)' | 'Overweight' | 'Obese Class I (Moderately obese)'
-| 'Obese Class II (Severely obese)' | 'Obese Class III (Very severely obese)'
+| 'Obese Class II (Severely obese)' | 'Obese Class III (Very severely obese)';
 
 interface BMIInput {
   height: number;
@@ -8,7 +8,7 @@ interface BMIInput {
 }
 
 export const calculateBmi = (height: number, weight: number): BMICategory => {
-  const BMI = weight / (height/100)**2
+  const BMI = weight / (height/100)**2;
 
   if (BMI < 15) {
     return 'Very severely underweight';
@@ -27,7 +27,7 @@ export const calculateBmi = (height: number, weight: number): BMICategory => {
   } else {
     return 'Obese Class III (Very severely obese)';
   }
-}
+};
 
 const parseInput = (args: Array<string>):BMIInput => {
   if (args.length > 4) throw new Error('too many arguments');
@@ -40,12 +40,16 @@ const parseInput = (args: Array<string>):BMIInput => {
   return {
     height: numbers[0],
     weight: numbers[1]
-  }
-}
+  };
+};
 
 try{
   const {height, weight} = (parseInput(process.argv));
   console.log(calculateBmi(height, weight));
 } catch (e) {
-  console.log('error :', e.message)
+  if (e instanceof Error){
+    console.log('error :', e.message);
+  } else {
+    console.log('non standard error', e);
+  }
 }
