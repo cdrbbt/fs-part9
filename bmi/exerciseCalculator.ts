@@ -13,7 +13,7 @@ interface ExInput{
   data: Array<number>
 }
 
-const calculateExercises = (dailyData: Array<number>, target: number): ExercisesEvaluation => {
+export const calculateExercises = (dailyData: Array<number>, target: number): ExercisesEvaluation => {
   const periodLenght = dailyData.length;
   const trainingDays = dailyData.filter(h => h !== 0).length;
   const average = dailyData.reduce((acc, val) => acc + val) / periodLenght;
