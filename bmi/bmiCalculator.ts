@@ -7,7 +7,7 @@ interface BMIInput {
   weight: number;
 }
 
-const calculateBmi = (height: number, weight: number): BMICategory => {
+export const calculateBmi = (height: number, weight: number): BMICategory => {
   const BMI = weight / (height/100)**2
 
   if (BMI < 15) {
