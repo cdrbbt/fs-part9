@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "calculateBmi": "ts-node bmiCalculator.ts"
+    "calculateBmi": "ts-node bmiCalculator.ts",
+    "calculateExercises": "ts-node exerciseCalculator.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^14.14.31",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   }
