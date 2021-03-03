@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NewPatient } from "./types";
+import { Gender, NewPatient } from "./types";
 
 export const parseNewPatient = (obj: any): NewPatient => {
   return {
     ssn: parseString(obj.ssn, 'ssn'),
     occupation: parseString(obj.occupation, 'occupation'),
-    gender: parseString(obj.gender, 'gender'),
+    gender: parseGender(obj.gender),
     dateOfBirth: parseDate(obj.dateOfBirth),
     name: parseString(obj.name, 'name')
   };
@@ -32,4 +32,15 @@ const parseDate = (date: any): string => {
     throw new Error('invalid date ' + date);
   }
   return date;
+};
+
+const parseGender = (gender: any): Gender => {
+  if (!gender || !isGender(gender)){
+    throw new Error('invalid gender' + gender);
+  }
+  return gender;
+};
+
+const isGender = (gender: any): gender is Gender => {
+  return Object.values(Gender).includes(gender);
 };
