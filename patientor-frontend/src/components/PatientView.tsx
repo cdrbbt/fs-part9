@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
 import { useParams } from 'react-router';
-import { useStateValue } from "../state";
+import { updatePatient, useStateValue } from "../state";
 
 import axios from "axios";
 import { apiBaseUrl } from "../constants";
@@ -16,7 +16,7 @@ const PatientView = () => {
     const res = await axios.get(apiBaseUrl.concat(`/patients/${id}`));
     console.log(res);
     const patient = res.data;
-    dispatch({ type: "UPDATE_PATIENT", payload: patient});
+    dispatch(updatePatient(patient));
   };
 
   if (!patients[id].ssn) {
