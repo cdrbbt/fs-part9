@@ -48,6 +48,7 @@ const data =
 const patients: Patient[] = data.map(p => {
     const object = parseNewPatient(p) as Patient;
     object.id =p.id;
+    object.entries = [];
     return object;
 });
 
