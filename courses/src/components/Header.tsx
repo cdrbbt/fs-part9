@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header: React.FC<{courseName: string}> = ({ courseName }) => {
+const Header = ({ courseName }: { courseName: string }) => {
   return (
     <h1>{courseName}</h1>
   )
