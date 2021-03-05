@@ -8,7 +8,8 @@ export const parseNewPatient = (obj: any): NewPatient => {
     occupation: parseString(obj.occupation, 'occupation'),
     gender: parseGender(obj.gender),
     dateOfBirth: parseDate(obj.dateOfBirth),
-    name: parseString(obj.name, 'name')
+    name: parseString(obj.name, 'name'),
+    entries: []
   };
 };
 

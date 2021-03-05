@@ -10,8 +10,9 @@ router.get('/', (_req, res) => {
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
+  console.log(id);
   try {
-    res.send(getPatient(id))
+    res.send(getPatient(id));
   } catch (e) {
     const error = e as Error;
     res.status(400).send(error.message);

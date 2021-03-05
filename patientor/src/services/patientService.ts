@@ -15,7 +15,8 @@ import patients from '../../data/patients';
 };
 
 export const getPatient = (id: string): Patient => {
-  const patient = patients.find(p => p.id = id);
+  console.log(patients)
+  const patient = patients.find(p => p.id === id);
   if (!patient) throw new Error (`invalid id ${id}`);
   return patient;
 };
