@@ -36,7 +36,6 @@ const PatientView = () => {
       <div>ssn: {patient.ssn}</div>
       <div>date of birth: {patient.dateOfBirth}</div>
       <div>occupation: {patient.occupation}</div>
-      <div>entries: {patient.entries}</div>
     </div>
   );
 };
