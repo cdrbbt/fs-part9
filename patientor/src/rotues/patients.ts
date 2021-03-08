@@ -1,6 +1,6 @@
 import express from 'express';
-import { addPatient, getPatient, getPatients } from '../services/patientService';
-import { parseNewPatient } from '../utils';
+import { addEntry, addPatient, getPatient, getPatients } from '../services/patientService';
+import { parseNewEntry, parseNewPatient } from '../utils';
 
 const router = express.Router();
 
@@ -27,6 +27,15 @@ router.post('/', (req, res) => {
   } catch (e) {
     const error = e as Error;
     res.status(400).send(error.message);
+  }
+});
+
+router.post('/:id/entries', (req, res) => {
+  try {
+    const newEntry = parseNewEntry(req.body);
+    res.send(addEntry(req.params.id, newEntry));
+  } catch (e) {
+    res.status(400).send((e as Error).message);
   }
 });
 
