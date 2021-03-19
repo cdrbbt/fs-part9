@@ -84,16 +84,17 @@ const isHealthCheckRating = (rating: any): rating is HealthCheckRating => {
 };
 
 const parseHealthRating = (rating: any): HealthCheckRating => {
-  if(!rating || !isHealthCheckRating(rating)){
+  const num = parseInt(rating);
+  if(!isHealthCheckRating(num)){
     throw new Error(`Invalid health rating ${rating}`);
   }
-  return rating;
+  return num;
 };
 
 
 const parseDianosisCodes = (codes: any): string[] | undefined => {
   if (!codes) return codes as undefined;
-  if (codes && Array.isArray(codes) && codes.every(isString)) {
+  if (Array.isArray(codes) && codes.every(isString)) {
     return codes;
   }
   throw new Error(`Invalid diagnoses codes ${codes}`);
@@ -110,7 +111,7 @@ throw new Error(`invalid discharge ${discharge}`);
 };
   
 const parseSickLeave = (sickLeave: any): {startDate: string, endDate: string} | undefined => {
-  if (!sickLeave) return undefined;
+  if (!sickLeave.startDate && !sickLeave.endDate) return undefined;
   const startDate = sickLeave.startDate;
   const endDate = sickLeave.endDate;
   if (startDate && endDate && isString(startDate) && isString(endDate) && isDate(startDate) && isDate(endDate)){
